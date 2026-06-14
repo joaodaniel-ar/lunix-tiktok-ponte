@@ -18,7 +18,7 @@ const io = new Server(server, {
 // CONFIGURAÇÃO DO TIKTOK
 // ==========================================
 // Mude para o seu nome de usuário real do TikTok (ex: fenixvtx)
-const tiktokUsername = "SEU_USUARIO_DO_TIKTOK_AQUI"; 
+const tiktokUsername = "fenixvtx"; 
 
 const tiktokLiveConnection = new WebcastPushConnection(tiktokUsername);
 
