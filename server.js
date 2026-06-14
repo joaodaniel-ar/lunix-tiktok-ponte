@@ -42,6 +42,21 @@ tiktokLiveConnection.on('chat', data => {
     });
 });
 
+// ==========================================
+// CAPTURA DE PRESENTES (GIFTS) PARA DICAS
+// ==========================================
+tiktokLiveConnection.on('gift', data => {
+    // Verifica se é um presente real (ignora interações gratuitas)
+    if (data.giftType === 1 && !data.repeatEnd) {
+        console.log(`🎁 Presente Recebido -> ${data.uniqueId} enviou ${data.giftName}`);
+        
+        io.emit('gift', { 
+            usuario: data.uniqueId, 
+            presente: data.giftName 
+        });
+    }
+});
+
 // Rota básica só para manter o servidor online
 app.get('/', (req, res) => {
     res.send("🟢 Ponte do Lunix TikTok está rodando perfeitamente!");
